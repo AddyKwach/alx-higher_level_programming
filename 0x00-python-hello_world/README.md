@@ -1,0 +1,1 @@
+A repository containing the basics of python programming including the manipulation of strings using index slicing and a sample c script that involves using the knowledge to prep for an interview
