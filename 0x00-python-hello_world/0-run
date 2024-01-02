@@ -1,2 +1,2 @@
 #!/bin/bash
-export PYFILE=main.py "\n"
+export PYFILE=main.py 
