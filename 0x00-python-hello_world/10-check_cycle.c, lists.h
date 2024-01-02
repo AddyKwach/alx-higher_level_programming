@@ -1,5 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef LISTS_H
+#define LISTS_H
 
 /* Definition for singly-linked list. */
 struct listint_s {
@@ -8,6 +8,13 @@ struct listint_s {
 };
 
 typedef struct listint_s listint_t;
+
+/* Function prototype for check_cycle */
+int check_cycle(listint_t *list);
+
+#endif /* LISTS_H */
+
+#include "lists.h"
 
 /**
  * check_cycle - Checks if a singly linked list has a cycle.
@@ -33,43 +40,4 @@ int check_cycle(listint_t *list) {
     }
 
     return 1;
-}
-
-/* Example usage */
-int main(void) {
-    listint_t *head, *node1, *node2, *node3;
-
-    /* Creating a linked list with a cycle */
-    head = malloc(sizeof(listint_t));
-    node1 = malloc(sizeof(listint_t));
-    node2 = malloc(sizeof(listint_t));
-    node3 = malloc(sizeof(listint_t));
-
-    if (!head || !node1 || !node2 || !node3) {
-        perror("Memory allocation failed");
-        return EXIT_FAILURE;
-    }
-
-    head->n = 1;
-    head->next = node1;
-    node1->n = 2;
-    node1->next = node2;
-    node2->n = 3;
-    node2->next = node3;
-    node3->n = 4;
-    node3->next = node1; /* Creating a cycle */
-
-    /* Check for cycle */
-    if (check_cycle(head))
-        printf("The linked list has a cycle\n");
-    else
-        printf("The linked list does not have a cycle\n");
-
-    /* Freeing memory */
-    free(head);
-    free(node1);
-    free(node2);
-    free(node3);
-
-    return 0;
 }
